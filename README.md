@@ -3,6 +3,8 @@ Number formatter using the engineering notation. All SI prefixes are supported.
 
 ## Basic Use
 
+    import SwiftEngineeringNumberFormatter
+    
     // Instantiate the class:
     let enf = EngineeringNumberFormatter()
 
