@@ -1,8 +1,8 @@
 /*
 
- SwiftEngineeringNumberFormatter
+   SwiftEngineeringNumberFormatter
 
- © Rui Carneiro
+   © Rui Carneiro
 
  */
 
