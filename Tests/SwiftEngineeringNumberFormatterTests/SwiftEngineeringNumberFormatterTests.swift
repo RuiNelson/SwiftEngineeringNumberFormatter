@@ -61,6 +61,7 @@ final class SwiftEngineeringNumberFormatterTests: XCTestCase {
         // Fraction Digits
         enf.maximumFractionDigits = 0
         XCTAssert(enf.string(3300) == "3k", "Fraction digits \(enf.string(3300))")
+        XCTAssert(enf.string(2999) == "3k", "Fraction digits \(enf.string(2999))")
 
         enf.minimumFractionDigits = 1
         XCTAssert(enf.string(0.1) == "100.0m", "Fraction digits \(enf.string(0.1))")
