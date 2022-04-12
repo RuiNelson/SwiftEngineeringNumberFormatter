@@ -1,5 +1,5 @@
 # SwiftEngineeringNumberFormatter
-Number formatter using the engineering notation. [All SI metric prefixes](https://en.wikipedia.org/wiki/Metric_prefix) are supported.
+Number formatter using the engineering notation. [All multiple of 3 SI metric prefixes](https://en.wikipedia.org/wiki/Metric_prefix) are supported.
 
 ## Basic Use
 
