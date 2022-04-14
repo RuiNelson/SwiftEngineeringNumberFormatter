@@ -45,9 +45,9 @@ extension EngineeringNumberFormatter {
         func symbol(withMu: Bool = true) -> Character? {
             if self == .micro, !withMu {
                 return "u"
+            } else {
+                return symbolWithMu
             }
-
-            return symbolWithMu
         }
 
         static func fromSymbol(_ symbol: Character) -> MetricPrefixes? {
