@@ -86,19 +86,19 @@ public class EngineeringNumberFormatter {
             return decimalNumberFormatter.string(for: value)!
         }
 
-        let log1000 = floor(log1000(absValue))
+        let logarithm = floor(log1000(absValue))
 
-        guard let prefix = MetricPrefixes.fromTimesThousandExponent(Int(log1000)) else {
+        guard let prefix = MetricPrefixes.fromTimesThousandExponent(Int(logarithm)) else {
             return scientificNumberFormatter.string(for: value)!
         }
 
-        let multiplier = pow(1000.0, log1000)
-        let multiplierStr = String(prefix.symbol(withMu: useGreekMu)!)
+        let multiplier = pow(1000.0, logarithm)
+        let multiplierChr = prefix.symbol(withMu: useGreekMu)!
 
         let base = absValue / multiplier
         let baseStr = decimalNumberFormatter.string(for: base)!
 
-        return signalStr + baseStr + multiplierStr
+        return signalStr + baseStr + String(multiplierChr)
     }
 
     /// Converts a String with a number written in engineering notation to a Double.
