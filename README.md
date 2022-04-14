@@ -13,18 +13,18 @@ Number formatter using the engineering notation. [All multiple of 3 SI metric pr
     enf.double(":P")                       // returns nil
 
     // Convert Double to String
-    enf.double(123E-6)                     // returns "123µ"
+    enf.string(123E-6)                     // returns "123µ"
 
     // Use "u" instead of "µ"
     enf.useGreekMu = false
-    enf.double(123E-6)                     // returns "123u"
+    enf.string(123E-6)                     // returns "123u"
 
     // Set the number of decimal places
     enf.maximumFractionDigits = 1
-    enf.double(1.0 / 3.0)                  // returns "333.3m"
+    enf.string(1.0 / 3.0)                  // returns "333.3m"
 
     enf.maximumFractionDigits = 0
-    enf.double(2999)                       // returns "3k"
+    enf.string(2999)                       // returns "3k"
 
 
 ## Add to your Swift Package Manager Project
