@@ -35,6 +35,7 @@ public class EngineeringNumberFormatter {
         }
         set {
             decimalNumberFormatter.maximumFractionDigits = newValue
+            scientificNumberFormatter.maximumFractionDigits = newValue
         }
     }
 
@@ -44,6 +45,7 @@ public class EngineeringNumberFormatter {
         }
         set {
             decimalNumberFormatter.minimumFractionDigits = newValue
+            scientificNumberFormatter.minimumFractionDigits = newValue
         }
     }
 
@@ -53,6 +55,7 @@ public class EngineeringNumberFormatter {
         }
         set {
             decimalNumberFormatter.locale = newValue
+            scientificNumberFormatter.locale = newValue
         }
     }
 
@@ -62,6 +65,7 @@ public class EngineeringNumberFormatter {
         }
         set {
             decimalNumberFormatter.localizesFormat = newValue
+            scientificNumberFormatter.localizesFormat = newValue
         }
     }
 
