@@ -109,7 +109,7 @@ public class EngineeringNumberFormatter {
     /// - Returns: A Double with the value or nil if the conversion fails
     public func double(_ string: String) -> Double? {
         if let direct = Double(string) {
-            // Decimal/Scientific
+            // Decimal/Scientific/Engineering with no prefix
 
             return direct
         } else {
