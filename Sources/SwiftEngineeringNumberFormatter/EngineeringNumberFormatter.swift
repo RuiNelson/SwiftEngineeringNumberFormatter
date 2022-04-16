@@ -72,12 +72,12 @@ public class EngineeringNumberFormatter {
     public var positiveSign = ""
     public var negativeSign = "-"
 
-    /// Uses the greek letter "µ" for as a prefix for "micro", if disabled will use "u".
+    /// Uses the greek letter "µ" for as a prefix for "micro", if false will use "u".
     public var useGreekMu: Bool = true
 
     public init() {}
 
-    /// Converts a Double to engineering notation.
+    /// Returns a String with the Double value written in Engineering Notation
     public func string(_ value: Double) -> String {
         guard value != 0 else {
             return decimalNumberFormatter.string(for: value)!
@@ -105,8 +105,8 @@ public class EngineeringNumberFormatter {
         return signalStr + baseStr + String(multiplierChr)
     }
 
-    /// Converts a String with a number written in engineering notation to a Double.
-    /// - Returns: A Double with the value or nil if the conversion fails.
+    /// Parses a String in Engineering, Scientific or Decimal notation to a Double
+    /// - Returns: A Double with the value or nil if the conversion fails
     public func double(_ string: String) -> Double? {
         if let direct = Double(string) {
             return direct
