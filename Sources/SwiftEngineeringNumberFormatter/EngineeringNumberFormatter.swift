@@ -109,18 +109,26 @@ public class EngineeringNumberFormatter {
     /// - Returns: A Double with the value or nil if the conversion fails
     public func double(_ string: String) -> Double? {
         if let direct = Double(string) {
+            // Decimal/Scientific
+
             return direct
+        } else {
+            // Engineering
+
+            var trimmedString = string.filter { $0.isWhitespace == false }
+
+            guard trimmedString.count >= 2 else {
+                return nil
+            }
+
+            let lastPart = trimmedString.removeLast()
+            let firstPart = trimmedString
+
+            guard let base = Double(firstPart), let prefix = MetricPrefixes.fromSymbol(lastPart) else {
+                return nil
+            }
+
+            return base * prefix.multiplier
         }
-
-        var trimmedString = string.filter { $0.isWhitespace == false }
-
-        let lastPart = trimmedString.removeLast()
-        let firstPart = trimmedString
-
-        guard let base = Double(firstPart), let prefix = MetricPrefixes.fromSymbol(lastPart) else {
-            return nil
-        }
-
-        return base * prefix.multiplier
     }
 }
