@@ -40,6 +40,11 @@ final class SwiftEngineeringNumberFormatterTests: XCTestCase {
 
             XCTAssert(result == expected, "Failed String to Double for value \(input), result: \(String(describing: result)), expected: \(expected)")
         }
+
+        XCTAssert(enf.double("") == nil)
+        XCTAssert(enf.double("1A") == nil)
+        XCTAssert(enf.double("µ") == nil)
+        XCTAssert(enf.double(" k") == nil)
     }
 
     func testDoubleToString() throws {
