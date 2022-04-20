@@ -2,12 +2,6 @@
 
 import Foundation
 
-internal func pow(_ x: Double, _ y: Int) -> Double {
-    let yDbl = Double(y)
-
-    return pow(x, yDbl)
-}
-
 extension EngineeringNumberFormatter {
     enum MetricPrefixes: Int, CaseIterable {
         case yotta = 8, zetta = 7, exa = 6, peta = 5, tera = 4, giga = 3, mega = 2, kilo = 1

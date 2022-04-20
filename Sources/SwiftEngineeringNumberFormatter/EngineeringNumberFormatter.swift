@@ -8,10 +8,6 @@
 
 import Foundation
 
-private func log1000(_ x: Double) -> Double {
-    log10(x) / 3.0 // log(1000) = 3
-}
-
 public class EngineeringNumberFormatter {
     private var decimalNumberFormatter: NumberFormatter = {
         let nf = NumberFormatter()
