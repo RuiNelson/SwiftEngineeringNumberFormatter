@@ -74,4 +74,12 @@ final class SwiftEngineeringNumberFormatterTests: XCTestCase {
         enf.maximumFractionDigits = 12
         XCTAssert(enf.string(1 / 3) == "333.333333333333m", "Fraction digits \(enf.string(1 / 3))")
     }
+
+    func testDoubleExt() {
+        let str = "10k"
+        let dbl = 10.0e3
+
+        XCTAssert(Double(engineeringNotation: str) == dbl)
+        XCTAssert(Double("lOm") == nil)
+    }
 }
