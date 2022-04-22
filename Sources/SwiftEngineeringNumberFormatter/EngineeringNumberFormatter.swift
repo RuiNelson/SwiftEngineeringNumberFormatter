@@ -75,7 +75,7 @@ public class EngineeringNumberFormatter {
 
     /// Returns a String with the Double value written in Engineering Notation
     public func string(_ value: Double) -> String {
-        guard value != 0 else {
+        guard value != 0, !value.isNaN, !value.isInfinite else {
             return decimalNumberFormatter.string(for: value)!
         }
 
