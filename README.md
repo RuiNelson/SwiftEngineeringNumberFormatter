@@ -25,6 +25,9 @@ Number formatter using the engineering notation. [All multiple of 3 SI metric pr
 
     enf.maximumFractionDigits = 0
     enf.string(2999)                       // returns "3k"
+    
+    // You can also instantiate Doubles
+    Double(engineeringNotation: "33p")     // returns 33E-12
 
 
 ## Add to your Swift Package Manager Project
@@ -33,7 +36,7 @@ See an example [here](https://github.com/RuiCarneiro/rigol2spice/blob/main/Packa
 
 Add package dependencies:
 
-    .package(url: "https://github.com/RuiCarneiro/SwiftEngineeringNumberFormatter", from: "1.0.0")
+    .package(url: "https://github.com/RuiCarneiro/SwiftEngineeringNumberFormatter", from: "1.1.0")
 
 And to your target, the dependency:
 
