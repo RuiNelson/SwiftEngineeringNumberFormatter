@@ -76,22 +76,27 @@ public class EngineeringNumberFormatter {
     /// Returns a String with the Double value written in Engineering Notation
     public func string(_ value: Double) -> String {
         let absValue = abs(value)
-        guard value != 0, !value.isNaN, !value.isInfinite, absValue >= 1000 || absValue < 1.0 else {
+        guard value != 0, !value.isNaN, !value.isInfinite else {
             return decimalNumberFormatter.string(for: value)!
         }
 
         let logarithm = floor(log1000(absValue))
-        let multiplier = pow(1000.0, logarithm)
-        let base = absValue / multiplier
+        let base = absValue / pow(1000.0, logarithm)
 
-        guard let prefix = MetricPrefixes.fromTimesThousandExponent(Int(logarithm)) else {
-            return scientificNumberFormatter.string(for: value)!
-        }
         let signalStr = value >= 0 ? positiveSign : negativeSign
-        let baseStr = decimalNumberFormatter.string(for: base)!
-        let multiplierChr = prefix.symbol(withMu: useGreekMu)!
 
-        return signalStr + baseStr + String(multiplierChr)
+        if let prefix = MetricPrefixes.fromTimesThousandExponent(Int(logarithm)) {
+            if let prefixChr = prefix.symbol(withMu: useGreekMu) {
+                // engineering with metric prefix
+                return signalStr + decimalNumberFormatter.string(for: base)! + String(prefixChr)
+            } else {
+                // engineering without metrix prefix
+                return signalStr + decimalNumberFormatter.string(for: base)!
+            }
+        } else {
+            // scientific fallback
+            return signalStr + scientificNumberFormatter.string(for: absValue)!
+        }
     }
 
     /// Parses a String in Engineering, Scientific or Decimal notation to a Double
@@ -99,11 +104,9 @@ public class EngineeringNumberFormatter {
     public func double(_ string: String) -> Double? {
         if let direct = Double(string) {
             // Decimal/Scientific/Engineering with no prefix
-
             return direct
         } else {
             // Engineering
-
             var trimmedString = string.filter { $0.isWhitespace == false }
 
             guard trimmedString.count >= 2 else {

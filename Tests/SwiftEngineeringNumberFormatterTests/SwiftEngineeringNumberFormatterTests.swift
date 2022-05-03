@@ -5,6 +5,7 @@ final class SwiftEngineeringNumberFormatterTests: XCTestCase {
     let pairs: [(String, Double)] = [
         ("1", 1),
         ("0", 0),
+        ("123", 123),
         ("1k", 1000),
         ("1m", 0.001),
         ("999M", 999e6),
@@ -14,6 +15,7 @@ final class SwiftEngineeringNumberFormatterTests: XCTestCase {
         ("-500m", -0.5),
         ("-123µ", -123e-6),
         ("3.3k", 3300),
+        ("-7E40", -7e40),
     ]
 
     func testStringToDouble() throws {

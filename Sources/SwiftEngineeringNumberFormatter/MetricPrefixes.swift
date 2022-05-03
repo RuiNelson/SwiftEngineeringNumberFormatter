@@ -9,9 +9,7 @@ extension EngineeringNumberFormatter {
         case milli = -1, micro = -2, nano = -3, pico = -4, femto = -5, atto = -6, zepto = -7, yocto = -8
 
         var multiplier: Double {
-            let selfValue = rawValue
-            let exponent = selfValue * 3
-            return pow(10.0, exponent)
+            pow(1000.0, rawValue)
         }
 
         private var symbolWithMu: Character? {
