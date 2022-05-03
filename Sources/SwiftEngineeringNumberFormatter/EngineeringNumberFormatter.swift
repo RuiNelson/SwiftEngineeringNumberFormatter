@@ -75,28 +75,21 @@ public class EngineeringNumberFormatter {
 
     /// Returns a String with the Double value written in Engineering Notation
     public func string(_ value: Double) -> String {
-        guard value != 0, !value.isNaN, !value.isInfinite else {
-            return decimalNumberFormatter.string(for: value)!
-        }
-
         let absValue = abs(value)
-        let signalStr = value >= 0 ? positiveSign : negativeSign
-
-        guard absValue >= 1000 || absValue < 1.0 else {
+        guard value != 0, !value.isNaN, !value.isInfinite, absValue >= 1000 || absValue < 1.0 else {
             return decimalNumberFormatter.string(for: value)!
         }
 
         let logarithm = floor(log1000(absValue))
+        let multiplier = pow(1000.0, logarithm)
+        let base = absValue / multiplier
 
         guard let prefix = MetricPrefixes.fromTimesThousandExponent(Int(logarithm)) else {
             return scientificNumberFormatter.string(for: value)!
         }
-
-        let multiplier = pow(1000.0, logarithm)
-        let multiplierChr = prefix.symbol(withMu: useGreekMu)!
-
-        let base = absValue / multiplier
+        let signalStr = value >= 0 ? positiveSign : negativeSign
         let baseStr = decimalNumberFormatter.string(for: base)!
+        let multiplierChr = prefix.symbol(withMu: useGreekMu)!
 
         return signalStr + baseStr + String(multiplierChr)
     }
