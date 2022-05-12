@@ -1,5 +1,10 @@
 disabled_rules:
   - identifier_name
+  - cyclomatic_complexity
+  - line_length
+  - function_body_length
+  - shorthand_operator
+  - large_tuple
 opt_in_rules:
   - closure_end_indentation
   - closure_spacing
